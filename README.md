@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/1200x300/3DDC84/000000?text=DocsLab+Preview" alt="DocsLab Banner" width="100%" />
+  <img src="https://res.cloudinary.com/dcauyzkfh/image/upload/v1779991112/DocsLab_Banner_v1lsi4.png" alt="DocsLab Banner" width="100%" />
 
   <h1>DocsLab</h1>
   <p>The ultimate open-source developer knowledge hub for students and contributors.</p>
