@@ -42,7 +42,7 @@ jobs:
     if: github.event.action == 'opened'
     steps:
       - name: Welcome Comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const { owner, repo, number } = context.issue;
