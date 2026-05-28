@@ -1,0 +1,37 @@
+---
+title: React + Next.js Basics
+description: Getting started with the foundational tools of modern web development.
+---
+
+# React + Next.js Basics
+
+React is a UI library, and Next.js is a React framework that provides building blocks for web applications.
+
+## Why Next.js?
+
+- **Server-Side Rendering (SSR):** Improves SEO and initial load performance.
+- **Routing:** Built-in file-system based routing (App Router).
+- **API Routes:** Build your backend directly within your Next.js app.
+- **Optimization:** Automatic image, font, and script optimizations.
+
+## Getting Started
+
+To create a new Next.js application:
+
+```bash
+npx create-next-app@latest
+```
+
+Follow the prompts to configure your project (we recommend using TypeScript, Tailwind CSS, and the App Router).
+
+## Basic Component
+
+```tsx
+export default function HelloWorld() {
+  return (
+    <div className="p-4 bg-gray-100 rounded">
+      <h1 className="text-xl font-bold">Hello World!</h1>
+    </div>
+  );
+}
+```
