@@ -1,0 +1,29 @@
+name: Documentation Improvement
+description: Suggest an improvement or fix for the documentation.
+title: "[DOCS] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve our documentation!
+  - type: input
+    id: page
+    attributes:
+      label: Page URL or Path
+      description: Which page needs improvement?
+      placeholder: e.g. /docs/open-source
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the issue or improvement
+      description: What is wrong or what could be better?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed Change (Optional)
+      description: How would you reword or fix this?
