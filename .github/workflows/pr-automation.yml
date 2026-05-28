@@ -1,0 +1,73 @@
+name: PR Automation
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  main:
+    name: Validate PR Title and Add Labels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+          requireScope: false
+
+      - uses: actions/labeler@v5
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
+
+  welcome:
+    name: Welcome New Contributors
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: Welcome Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo, number } = context.issue;
+
+            // Check if this is their first PR
+            const { data: prs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'all'
+            });
+
+            const userPrs = prs.filter(pr => pr.user.login === context.payload.pull_request.user.login);
+
+            if (userPrs.length === 1) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: number,
+                body: `🎉 Welcome to **Android Club Docs**, @${context.payload.pull_request.user.login}! Thank you for making your first contribution!\n\nA maintainer will review your Pull Request soon. In the meantime, please ensure that your PR follows our guidelines in \`CONTRIBUTING.md\`.`
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: number,
+                body: `Thanks for the contribution, @${context.payload.pull_request.user.login}! We will review this PR shortly.`
+              });
+            }

@@ -1,0 +1,24 @@
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "content/docs/**/*"
+          - "**/*.md"
+          - "**/*.mdx"
+
+ui/ux:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/app/**/*.css"
+          - "tailwind.config.*"
+          - "src/app/(home)/**/*"
+
+infrastructure:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**/*"
+          - "package.json"
+          - "package-lock.json"
+          - ".husky/**/*"
+          - "eslint.config.*"
+          - "postcss.config.*"
+          - "next.config.*"
