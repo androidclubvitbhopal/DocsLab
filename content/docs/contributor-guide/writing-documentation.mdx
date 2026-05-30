@@ -45,15 +45,30 @@ The DocsLab content structure looks like this:
 
 ```txt
 content/docs/
+├── open-source/
+├── contributor-guide/
 ├── android/
 ├── web-dev/
 ├── prompt-engineering/
-├── open-source/
 ├── shortcuts/
-└── contributor-guide/
+└── projects/
 ```
 
 Contributors should add their new content inside the appropriate folder under `content/docs/`.
+
+### Selecting the Correct Category
+
+- **open-source**: Git, GitHub, open source etiquette.
+- **contributor-guide**: DocsLab contribution guides.
+- **android**: Mobile development topics.
+- **web-dev**: React, Next.js, HTML/CSS.
+- **prompt-engineering**: AI prompts.
+- **shortcuts**: Productivity and tools.
+- **projects**: Project showcases.
+
+### Updating Category Landing Pages
+
+If you create a new documentation page, please remember to update the corresponding `index.mdx` file in that category folder. We use the `<Cards>` component on the landing page to feature important guides, so adding your new guide to the landing page helps users find it easily.
 
 ## Creating a New Documentation Page
 

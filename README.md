@@ -14,9 +14,9 @@
   </p>
 
   <p>
-    <a href="#getting-started"><strong>Documentation</strong></a> ·
-    <a href="CONTRIBUTING.md"><strong>Contributing Guide</strong></a> ·
-    <a href="#community--support"><strong>Discord</strong></a> ·
+    <a href="https://docs-lab-eta.vercel.app/docs/start-here"><strong>Start Here</strong></a> ·
+    <a href="https://docs-lab-eta.vercel.app/docs"><strong>Documentation</strong></a> ·
+    <a href="https://docs-lab-eta.vercel.app/docs/contributor-guide"><strong>Contributor Hub</strong></a> ·
     <a href="https://github.com/androidclubvitbhopal/DocsLab/issues"><strong>Open Issues</strong></a>
   </p>
 </div>
@@ -67,6 +67,7 @@ Our primary goal is to preserve, organize, and share high-quality technical know
 .
 ├── .github/             # GitHub Actions workflows and issue templates
 ├── content/             # MDX documentation files and collections
+│   └── docs/            # Categorized learning tracks and guides
 ├── public/              # Static assets (images, fonts, etc.)
 ├── src/                 # Application source code (Next.js app router)
 │   ├── app/             # App routing and layouts
@@ -151,14 +152,16 @@ If you can write technical content, fix typos, improve explanations, or share kn
 
 ## 📚 Documentation Sections
 
-Our knowledge base is divided into several key areas:
+Our knowledge base is divided into several key learning tracks:
 
-- **[Open Source](/content/docs/open-source)** - Get started with OSS.
-- **[Prompt Engineering](/content/docs/prompt-engineering)** - Learn to communicate with AI.
-- **[Android](/content/docs/android)** - Guides and tutorials for mobile development.
-- **[Web Development](/content/docs/web-dev)** - Frontend and backend web technologies.
-- **[Shortcuts](/content/docs/shortcuts)** - IDE and tool productivity tips.
-- **[Contributor Guides](/content/docs/contributor-guide)** - How to write and publish docs.
+- **[Start Here](https://docslab.vercel.app/docs/start-here)** - Quick guide to navigate the docs.
+- **[Open Source](https://docslab.vercel.app/docs/open-source)** - Essential guides on Git, GitHub, and contributing.
+- **[Contributor Hub](https://docslab.vercel.app/docs/contributor-guide)** - Rules and guidelines for contributing to DocsLab.
+- **[Android Development](https://docslab.vercel.app/docs/android)** - Guides and tutorials for mobile development.
+- **[Web Development](https://docslab.vercel.app/docs/web-dev)** - Frontend and backend web technologies.
+- **[Prompt Engineering](https://docslab.vercel.app/docs/prompt-engineering)** - Learn to communicate with AI.
+- **[Productivity & Shortcuts](https://docslab.vercel.app/docs/shortcuts)** - IDE and tool productivity tips.
+- **[Projects](https://docslab.vercel.app/docs/projects)** - Android Club VITB initiatives and community projects.
 
 ## ⚙️ GitHub Workflow
 

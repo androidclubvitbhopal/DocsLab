@@ -9,6 +9,22 @@ First off, thank you for considering contributing to DocsLab! It's people like y
 3. **Install dependencies:** `npm install`
 4. **Run the dev server:** `npm run dev`
 
+## Documentation Structure
+
+DocsLab is organized into structured learning tracks inside the `content/docs/` directory:
+
+- `open-source/`
+- `contributor-guide/`
+- `android/`
+- `web-dev/`
+- `prompt-engineering/`
+- `shortcuts/`
+- `projects/`
+
+When adding new content, find the most appropriate category folder and add your `.mdx` file there. If you're unsure, feel free to ask in an issue.
+
+For detailed instructions on writing documentation with MDX, please read our [Documentation Contribution Guide](./content/docs/contributor-guide/writing-documentation.mdx) or view it live on the [Contributor Hub](https://docslab.vercel.app/docs/contributor-guide).
+
 ## Branching Strategy
 
 - Always create a new branch from `main` for your work.

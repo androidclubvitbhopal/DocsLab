@@ -78,10 +78,10 @@ export default function HomePage() {
             typos, sharing learning resources, and creating roadmaps.
           </p>
           <Link
-            href="/docs/contributor-guide/writing-documentation"
+            href="/docs/contributor-guide"
             className="px-8 py-3 bg-fd-primary text-fd-primary-foreground font-semibold rounded-lg hover:bg-fd-primary/90 transition-colors shadow-md"
           >
-            Check the Contribution Guide
+            Check the Contributor Hub
           </Link>
         </div>
       </section>
