@@ -135,6 +135,20 @@ We ❤️ contributions! Whether it's a typo fix, a new tutorial, or a feature e
 Check out our <a href="https://github.com/androidclubvitbhopal/DocsLab/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first issues</a> or filter by the <code>beginner</code> label. Please review our <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for full guidelines on contribution etiquette.
 </details>
 
+## 📝 Contributing Documentation
+
+You do not need to know React, Next.js, or advanced development concepts to contribute to DocsLab.
+
+If you can write technical content, fix typos, improve explanations, or share knowledge, you can contribute.
+
+📖 Documentation Contribution Guide:
+[Documentation Contribution Guide](./content/docs/contributor-guide/writing-documentation.mdx)
+
+📄 Documentation Template:
+[DOC_TEMPLATE.mdx](./.github/DOC_TEMPLATE.mdx)
+
+> New to open source? Start with documentation contributions. Most DocsLab pages are written using simple MDX (Markdown + components), and our guide will walk you through everything you need.
+
 ## 📚 Documentation Sections
 
 Our knowledge base is divided into several key areas:

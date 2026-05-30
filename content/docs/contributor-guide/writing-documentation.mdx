@@ -1,0 +1,143 @@
+---
+title: Documentation Contribution Guide
+description: Learn how to contribute to DocsLab documentation using MDX.
+---
+
+# Documentation Contribution Guide
+
+Many contributors may be interested in contributing content but are unfamiliar with MDX, Fumadocs, or documentation project structures. This guide will help you understand how to contribute.
+
+## Introduction
+
+**What is DocsLab?**
+
+DocsLab is an open-source initiative built by Android Club VIT Bhopal. It is the ultimate open-source developer knowledge hub for students and contributors.
+
+**Why documentation contributions matter**
+
+Documentation is the foundation of any good project. By contributing, you help others learn and reduce the barrier to entry for new developers.
+
+**Who can contribute**
+
+Anyone! You don't need to be an expert in React or Next.js to contribute content, fix typos, or improve explanations.
+
+## Understanding MDX
+
+MDX is essentially Markdown with additional capabilities. It allows you to use React components inside Markdown documents.
+
+### Code Example
+
+````mdx
+# Heading
+
+This is a paragraph.
+
+## Code Example
+
+```js
+console.log("Hello DocsLab");
+```
+````
+
+## Documentation Structure
+
+The DocsLab content structure looks like this:
+
+```txt
+content/docs/
+├── android/
+├── web-dev/
+├── prompt-engineering/
+├── open-source/
+├── shortcuts/
+└── contributor-guide/
+```
+
+Contributors should add their new content inside the appropriate folder under `content/docs/`.
+
+## Creating a New Documentation Page
+
+Every documentation page needs a frontmatter at the top. This defines the title and description of the page.
+
+Example:
+
+```mdx
+---
+title: Git Cheat Sheet
+description: Common Git commands for contributors.
+---
+
+# Git Cheat Sheet
+
+Content here...
+```
+
+## Internal Linking
+
+To link to other pages within DocsLab, use relative paths starting with `/docs/`:
+
+```mdx
+[React Basics](/docs/web-dev/react-nextjs-basics)
+```
+
+## Code Blocks
+
+You can add code blocks by specifying the language after the backticks:
+
+### JavaScript
+
+```javascript
+const message = "Hello DocsLab";
+```
+
+### Java
+
+```java
+System.out.println("Hello DocsLab");
+```
+
+### Kotlin
+
+```kotlin
+println("Hello DocsLab")
+```
+
+### Bash
+
+```bash
+npm run dev
+```
+
+## Documentation Writing Guidelines
+
+- **Clear headings:** Use clear and descriptive headings.
+- **Beginner-friendly explanations:** Write as if you are explaining to a beginner.
+- **Examples where possible:** Always provide examples to illustrate your points.
+- **Consistent formatting:** Follow standard markdown formatting rules.
+- **Avoid large walls of text:** Break down paragraphs and use lists or bullet points.
+
+## Recommended Workflow
+
+1. Pick an issue from the issue tracker.
+2. Create a branch for your work.
+3. Add or update documentation pages.
+4. Test locally using `npm run dev`.
+5. Open a Pull Request!
+
+## FAQ Section
+
+**Do I need to know React?**
+
+No! If you can write markdown, you can contribute to our documentation.
+
+**Do I need to know MDX?**
+
+Not deeply. Basic markdown knowledge is enough. Our guide covers everything else you need.
+
+**Can I contribute only content?**
+
+Absolutely. We value content contributions as much as code contributions.
+
+**Can I fix typos?**
+
+Yes, typo fixes and small grammar corrections are always welcome!
