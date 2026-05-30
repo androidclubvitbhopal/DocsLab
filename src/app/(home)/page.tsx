@@ -67,8 +67,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Contributor CTA */}
+      <section className="py-24 px-4 border-t border-fd-border bg-fd-background">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <h2 className="text-3xl font-bold mb-6">
+            ✍️ Want to contribute but don&apos;t know React or Next.js?
+          </h2>
+          <p className="text-xl text-fd-muted-foreground mb-8 max-w-2xl mx-auto">
+            You can help by writing documentation, improving guides, fixing
+            typos, sharing learning resources, and creating roadmaps.
+          </p>
+          <Link
+            href="/docs/contributor-guide/writing-documentation"
+            className="px-8 py-3 bg-fd-primary text-fd-primary-foreground font-semibold rounded-lg hover:bg-fd-primary/90 transition-colors shadow-md"
+          >
+            Check the Contribution Guide
+          </Link>
+        </div>
+      </section>
+
       {/* Community Section */}
-      <section className="py-24 px-4 bg-fd-secondary/30">
+      <section className="py-24 px-4 bg-fd-secondary/30 border-t border-fd-border">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Join the Community</h2>
           <p className="text-xl text-fd-muted-foreground mb-10">
