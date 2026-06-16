@@ -1,0 +1,232 @@
+---
+title: Git & GitHub Cheat Sheet
+description: A comprehensive cheat sheet of common Git commands, branching, Pull Request workflows, and troubleshooting for new contributors.
+---
+
+# Git & GitHub Cheat Sheet
+
+A quick reference for new contributors. Whether you are making your first Pull Request or untangling a tricky merge, this page covers the commands and workflows you will use every day.
+
+<Callout type="info" title="New to Git?">
+  Git is a version control system that tracks changes to your code. GitHub is a
+  website that hosts your Git repositories online so you can collaborate with
+  others.
+</Callout>
+
+## Common Git Commands
+
+### Setup & Configuration
+
+Set your name and email once so your commits are properly attributed:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+### Starting a Repository
+
+```bash
+# Initialize a new repository in the current folder
+git init
+
+# Download an existing repository
+git clone https://github.com/USERNAME/REPO.git
+```
+
+### Checking Status & History
+
+```bash
+# See which files have changed
+git status
+
+# View the commit history
+git log --oneline --graph --decorate
+```
+
+### Staging & Committing
+
+```bash
+# Stage a specific file
+git add filename.txt
+
+# Stage all changed files
+git add .
+
+# Commit staged changes with a message
+git commit -m "feat: add new contributor guide"
+```
+
+### Syncing with the Remote
+
+```bash
+# Download changes from the remote without merging
+git fetch
+
+# Download and merge changes from the remote
+git pull
+
+# Upload your commits to the remote
+git push origin branch-name
+```
+
+## Branch Workflow
+
+Branches let you work on a feature without affecting the main codebase. Always create a new branch for each piece of work.
+
+```bash
+# Create and switch to a new branch
+git checkout -b feature/your-feature-name
+
+# List all branches (the current one is marked with *)
+git branch
+
+# Switch to an existing branch
+git checkout main
+
+# Merge another branch into your current branch
+git merge feature/your-feature-name
+
+# Delete a branch once it is merged
+git branch -d feature/your-feature-name
+```
+
+<Callout title="Branch naming tip">
+  Use descriptive prefixes like `feature/`, `fix/`, or `docs/` so others can
+  understand the purpose of your branch at a glance.
+</Callout>
+
+## Pull Request Workflow
+
+A Pull Request (PR) is how you propose your changes to a project. Here is the full workflow from start to finish:
+
+### 1. Fork the Repository
+
+Click the **Fork** button at the top right of the repository page to create your own copy.
+
+### 2. Clone Your Fork
+
+```bash
+git clone https://github.com/YOUR_USERNAME/REPO.git
+cd REPO
+```
+
+### 3. Create a Branch
+
+```bash
+git checkout -b docs/improve-readme
+```
+
+### 4. Make Changes and Commit
+
+```bash
+git add .
+git commit -m "docs: improve README setup instructions"
+```
+
+### 5. Push Your Branch
+
+```bash
+git push origin docs/improve-readme
+```
+
+### 6. Open the Pull Request
+
+Go to the original repository on GitHub and click **Compare & pull request**. Write a clear title and description explaining **what** you changed and **why**.
+
+<Callout type="info" title="Keep your fork up to date">
+  Before starting new work, sync your fork with the original repository so you
+  are building on the latest code. See the troubleshooting section below.
+</Callout>
+
+## Fork vs Clone
+
+These two terms confuse many beginners. Here is the difference:
+
+| Action    | What it does                                                  | When to use it                                       |
+| --------- | ------------------------------------------------------------- | ---------------------------------------------------- |
+| **Fork**  | Creates a copy of a repository under **your** GitHub account. | Contributing to a project you do **not** own.        |
+| **Clone** | Downloads a repository to your **local** computer.            | Getting any repository onto your machine to work on. |
+
+In short: you **fork** on GitHub to get your own online copy, then you **clone** that fork to your computer to start editing.
+
+```bash
+# After forking on GitHub, clone YOUR fork:
+git clone https://github.com/YOUR_USERNAME/REPO.git
+
+# Add the original project as a remote called "upstream"
+git remote add upstream https://github.com/ORIGINAL_OWNER/REPO.git
+```
+
+## Git Troubleshooting
+
+Things go wrong — that is normal. Here are fixes for the most common situations.
+
+### I committed to the wrong branch
+
+```bash
+# Undo the last commit but keep your changes
+git reset --soft HEAD~1
+```
+
+### I need to discard local changes
+
+```bash
+# Discard changes in a specific file
+git checkout -- filename.txt
+
+# Discard ALL local changes (use with caution!)
+git reset --hard
+```
+
+### My branch is behind the original repository
+
+```bash
+# Fetch the latest changes from upstream
+git fetch upstream
+
+# Merge them into your main branch
+git checkout main
+git merge upstream/main
+```
+
+### I have a merge conflict
+
+When Git cannot automatically merge changes, it marks the conflict in the file:
+
+```text
+<<<<<<< HEAD
+Your changes
+=======
+Their changes
+>>>>>>> branch-name
+```
+
+Edit the file to keep the correct code, remove the `<<<<<<<`, `=======`, and `>>>>>>>` markers, then:
+
+```bash
+git add filename.txt
+git commit
+```
+
+### I want to undo `git add`
+
+```bash
+# Unstage a file (keeps your changes)
+git restore --staged filename.txt
+```
+
+### I made a typo in my last commit message
+
+```bash
+git commit --amend -m "fix: corrected commit message"
+```
+
+<Callout type="warn" title="Be careful with history rewriting">
+  Commands like `git reset --hard` and `git commit --amend` rewrite history.
+  Avoid using them on branches that others are already working from.
+</Callout>
+
+## Next Steps
+
+Ready to put this into practice? Read the [GitHub Contribution Guide](/docs/open-source/github-contribution-guide) and submit your first Pull Request!
