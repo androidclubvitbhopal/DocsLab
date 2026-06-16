@@ -1,0 +1,249 @@
+---
+title: "Android Development Learning Path"
+description: "A structured learning path for Android development covering Kotlin, Jetpack Compose, MVVM, networking, and publishing."
+---
+
+# Android Development Learning Path
+
+## Overview
+
+This roadmap guides you from a complete beginner to an advanced Android developer using modern tools and best‑practice architectures. Each section includes a brief description, key concepts, and recommended resources (official docs, tutorials, and sample projects).
+
+---
+
+## 1️ Getting Started
+
+### 1.1 Install Android Studio
+
+- Download the latest stable version from the [Android Studio website](https://developer.android.com/studio).
+- Set up the IDE, SDK manager, and a virtual device (AVD).
+
+### 1.2 Kotlin Basics
+
+> **Why Kotlin?** Concise syntax, null‑safety, coroutine support.
+
+- **Core Topics:** Variables (`val`, `var`), data types, Functions, extensions, Classes, inheritance, sealed classes, Collections, lambda expressions, and Coroutines (basic `launch`, `async`).
+- **Resources:** [Kotlin docs](https://kotlinlang.org/docs/home.html) and Android Kotlin Fundamentals (codelab).
+
+---
+
+## 2️⃣ Building UI with Jetpack Compose
+
+### 2.1 Compose Fundamentals
+
+- Composable functions and the `@Composable` annotation.
+- State handling using `remember` and `mutableStateOf`.
+- Layouts including `Column`, `Row`, `Box`, and `LazyColumn`.
+- Theming with `MaterialTheme` and dark mode.
+
+Here is a basic example of how to build a Compose UI component:
+
+```kotlin
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
+}
+```
+
+### 2.2 Advanced Compose
+
+- **Navigation component** (`NavHost`, `composable` destinations)
+- **Animations** (`animate*AsState`, `Transition`)
+- **Custom drawing** with `Canvas`
+- **Testing UI** with `compose-test`
+  Here is an example of an advanced feature—adding smooth animations with just a few lines of code:
+
+```kotlin
+@Composable
+fun ExpandableCard(title: String, body: String) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Column(modifier = Modifier.padding(16.dp).clickable { expanded = !expanded }) {
+        Text(text = title, style = MaterialTheme.typography.titleLarge)
+
+        // This automatically animates the text appearing and disappearing
+        AnimatedVisibility(visible = expanded) {
+            Text(text = body, modifier = Modifier.padding(top = 8.dp))
+        }
+    }
+}
+```
+
+**Resources:**
+
+- Official Compose tutorial: https://developer.android.com/jetpack/compose/tutorial
+- Compose pathway on Android Developers
+
+## Architecture – MVVM + Clean Architecture
+
+### 3.1 MVVM Overview
+
+- **Model:** Repository & data sources
+- **View:** Compose UI (stateless)
+- **ViewModel:** `androidx.lifecycle.ViewModel`, `LiveData`/`StateFlow`
+- Here is a standard example of a modern ViewModel exposing state to the UI:
+
+```kotlin
+@HiltViewModel
+class TodoViewModel @Inject constructor(
+    private val repository: TodoRepository
+) : ViewModel() {
+
+    // Internal mutable state
+    private val _uiState = MutableStateFlow<List<Todo>>(emptyList())
+    // Exposed read-only state for Compose
+    val uiState: StateFlow<List<Todo>> = _uiState.asStateFlow()
+
+    fun fetchTodos() {
+        viewModelScope.launch {
+            _uiState.value = repository.getAllTodos()
+        }
+    }
+}
+```
+
+### 3.2 Dependency Injection
+
+- Hilt (`@HiltAndroidApp`, `@Inject`, modules)
+- Scoping ViewModel lifecycles
+
+### 3️⃣ Clean Architecture Layers
+
+- Domain (use‑cases), Data (repositories), Presentation (ViewModel)
+- Benefits: testability, separation of concerns
+
+**Resources:**
+
+- Android Architecture Guide: https://developer.android.com/jetpack/guide
+- “Guide to app architecture” codelab
+
+## Networking & Data Persistence
+
+### 4.1 Retrofit + Kotlin Coroutines
+
+- Define API interfaces, `@GET`, `@POST`
+- Use `suspend` functions for async calls
+- Error handling with `Result` or sealed classes
+- Defining a network call with Retrofit is as simple as creating an interface:
+
+```kotlin
+interface WeatherApiService {
+    @GET("data/2.5/weather")
+    suspend fun getCurrentWeather(
+        @Query("q") cityName: String,
+        @Query("appid") apiKey: String
+    ): WeatherResponse
+}
+```
+
+### 4.2 OkHttp Interceptors
+
+- **Logging:** Use `HttpLoggingInterceptor` to see request and response data (URLs, headers, JSON bodies) directly in Logcat. This is essential for debugging API issues.
+- **Authentication:** Create custom interceptors to automatically attach API keys or Bearer tokens to every single outgoing request so you don't have to add them manually each time.
+
+Here is how you set up an OkHttp client with a logging and auth interceptor to pass into Retrofit:
+
+```kotlin
+// 1. Create a logger
+val loggingInterceptor = HttpLoggingInterceptor().apply {
+    level = HttpLoggingInterceptor.Level.BODY
+}
+
+// 2. Build the client with interceptors
+val okHttpClient = OkHttpClient.Builder()
+    .addInterceptor(loggingInterceptor)
+    .addInterceptor { chain ->
+        // This adds an Auth header to every request automatically
+        val request = chain.request().newBuilder()
+            .addHeader("Authorization", "Bearer YOUR_TOKEN_HERE")
+            .build()
+        chain.proceed(request)
+    }
+    .build()
+```
+
+### 4.3 Data storage
+
+- Room database (entities, DAO, migrations)
+- DataStore (preferences)
+- Offline‑first strategy with Repository pattern
+- Here is how you define a table in a Room database using a simple Kotlin data class:
+
+```kotlin
+@Entity(tableName = "transactions")
+data class Transaction(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val amount: Double,
+    val description: String,
+    val date: Long
+)
+```
+
+**Resources:**
+
+- Retrofit docs: https://square.github.io/retrofit/
+- Android Networking codelab
+
+## Advanced Topics
+
+### 5.1 WorkManager & Background Tasks
+
+- Periodic work, constraints, chaining
+
+### 5.2 Performance & Testing
+
+- Profile your app with Android Profiler
+- Unit testing ViewModel (JUnit + Turbine)
+- UI testing with Compose Test and Espresso
+
+### 5.3 Security & Permissions
+
+- Runtime permissions, Biometric auth
+
+## Publishing Apps
+
+### 6.1 Preparing Release Build
+
+- Signing configs, `gradle` `signingConfig`
+- ProGuard / R8 shrinker
+
+### 6.2 Google Play Console
+
+- Create a developer account, app listing
+- Upload AAB, review checklist
+- Play Store “App Bundle” advantages
+
+### 6.3 Continuous Delivery (optional)
+
+- Fastlane automation for CI/CD
+
+**Resources:**
+
+- Publishing guide: https://developer.android.com/studio/publish
+- Fastlane docs
+
+---
+
+## Suggested Learning Path Timeline
+
+| Week  | Focus                          | Deliverable                                  |
+| ----- | ------------------------------ | -------------------------------------------- |
+| 1‑2   | Android Studio & Kotlin basics | Simple “Hello World” app                     |
+| 3‑4   | Jetpack Compose fundamentals   | Multi‑screen Compose prototype               |
+| 5‑6   | MVVM & Hilt                    | Todo app with ViewModel & DI                 |
+| 7‑8   | Networking & Room              | Weather app consuming a public API           |
+| 9‑10  | Advanced Compose & Navigation  | Master‑detail layout                         |
+| 11‑12 | WorkManager & Testing          | Background sync + unit tests                 |
+| 13‑14 | Publishing prep                | Build release bundle, upload to Play Console |
+
+## Final Project
+
+Create a **“Personal Finance Tracker”** that demonstrates:
+
+- **Kotlin** language features
+- **Compose** UI with dark/light themes
+- **MVVM + Hilt** architecture
+- **Networking** (sync with a mock API)
+- **Room** persistence for transactions
+- **WorkManager** for daily backup
+- **Play Store** ready release bundle
