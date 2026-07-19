@@ -10,10 +10,11 @@ This document outlines the process for contributing to DocsLab.
 
 To get started locally, follow these steps:
 
-1. **Fork the repository** 
+1. **Fork the repository**
    Click the "Fork" button at the top right of this page to create your own copy of the repository.
 
 2. **Clone your fork**
+
    ```bash
    git clone https://github.com/<your-username>/DocsLab.git
    cd DocsLab
@@ -21,14 +22,17 @@ To get started locally, follow these steps:
 
 3. **Install dependencies**
    We use `npm` as our package manager. Run the following command to install all necessary packages:
+
    ```bash
    npm install
    ```
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
+
    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The page will automatically update as you edit the files.
 
 5. **Sync with upstream** (Recommended)
@@ -81,11 +85,13 @@ git checkout -b <type>/<short-description>
 We adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification. This leads to more readable messages that are easy to follow.
 
 The format is:
+
 ```text
 <type>[optional scope]: <description>
 ```
 
 ### Allowed Types:
+
 - `feat`: A new feature or a new documentation page
 - `fix`: A bug fix or typo correction
 - `docs`: Documentation only changes
@@ -94,6 +100,7 @@ The format is:
 - `chore`: Updating grunt tasks, package manager configs, etc.
 
 **Examples:**
+
 - `docs: update setup instructions in CONTRIBUTING.md`
 - `feat(android): add getting started guide for Jetpack Compose`
 - `fix: resolve broken links on the prompt engineering page`
@@ -105,6 +112,7 @@ The format is:
 When you are ready to submit your changes, follow these steps:
 
 1. **Push your changes to your fork**:
+
    ```bash
    git push origin <your-branch-name>
    ```
@@ -129,7 +137,7 @@ When you are ready to submit your changes, follow these steps:
 
 ## 💬 Communication & Support
 
-- We use our **Discord Server** for all project-related discussions. 
+- We use our **Discord Server** for all project-related discussions.
 - If you find a bug or have a suggestion, please [open an issue](https://github.com/androidclubvitbhopal/DocsLab/issues).
 - Before starting on a massive change, please open an issue to discuss it with the maintainers to ensure your work aligns with the project goals.
 
